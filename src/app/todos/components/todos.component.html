@@ -1,0 +1,36 @@
+<form [formGroup]="form" (submit)="addTodo()">
+  <div class="d-flex m-2 align-middle">
+    <mat-form-field class="form-input">
+      <mat-label>Nouvelle tâche</mat-label>
+      <input matInput formControlName="label" type="text" required>
+      <mat-error *ngIf="form.get('label').hasError('required')">Ce champ est requis</mat-error>
+    </mat-form-field>
+    <button mat-mini-fab class="m-2" color="primary" type="submit">
+      <mat-icon class="mat-18">add</mat-icon>
+    </button>
+  </div>
+</form>
+<div>
+  <h1>
+    Mes tâches
+  </h1>
+</div>
+<div class="row">
+  <div class="col-1">
+    N°
+  </div>
+  <div class="col-7">
+    Nom
+  </div>
+  <div class="col-2">
+    Etat
+  </div>
+  <div class="col-2">
+    Action
+  </div>
+</div>
+<mat-divider></mat-divider>
+<div *ngFor="let todo of todos; let last = last">
+  <app-todo [todo]="todo" (newTodo)="updateTodo($event)" (todoToDelete)="deleteTodo($event)"></app-todo>
+  <mat-divider *ngIf="!last"></mat-divider>
+</div>

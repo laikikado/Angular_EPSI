@@ -1,26 +1,29 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppComponent } from './app.component';
-import { TodosModule } from './todos/todos.module';
-
+import { TodosComponent } from './components/todos.component';
+import { TodoModule } from './todo/todo.module';
 
 @NgModule({
-  declarations: [AppComponent],
   imports: [
-    MatInputModule,
-    MatFormFieldModule,
     BrowserAnimationsModule,
     BrowserModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatFormFieldModule,
     MatIconModule,
+    MatInputModule,
     ReactiveFormsModule,
-    TodosModule,
+    TodoModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  exports: [TodosComponent],
+  declarations: [TodosComponent],
+  providers: []
 })
-export class AppModule {}
+export class TodosModule {}
